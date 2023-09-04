@@ -88,26 +88,29 @@ node_modules/
 % git status
 ```
 
-```result
-On branch main
-→ メインブランチ
-Your branch is up to date with 'origin/main'.
-→ あなたのブランチは'origin/main'で最新です。
+### Gitのローカルブランチの情報を表示する
 
-Changes not staged for commit:
-→ ステージングエリアに追加されていない変更があることを示しています。：
-  (use "git add <file>..." to update what will be committed)
-→ コミットされる内容を更新するには "git add コマンド"を使う
-  (use "git restore <file>..." to discard changes in working directory)
-→ 作業ディレクトリの変更を破棄するには "git restore コマンド"を使う
-	modified:   README.md
-
-Untracked files:
-Git に追跡されていない新しいファイルやディレクトリを指します。
-  (use "git add <file>..." to include in what will be committed)
-→ git addコマンドを使って、保存される内容に含める
-	.gitignore
-
-no changes added to commit (use "git add" and/or "git commit -a")
-→ Gitに保存されてません。 git add コマンドか、 git commit -aコマンドを実行してください。
+```sh
+% git branch -vv
 ```
+
+### ステージングエリアにファイルを追加する
+
+```sh
+% git add .
+```
+
+### Gitでコミットを作成する
+
+コミットは、ファイルの変更を登録します
+
+```sh
+% git commit -m "start"
+```
+
+### ローカルリポジトリ内の変更をリモートリポジトリに追加する
+
+```sh
+% git push
+```
+
