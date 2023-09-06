@@ -1,59 +1,60 @@
 /* background: linear-gradient() 背景にグラデーションを適用する */
+
 /* -webkit-background-clip: text 背景を文字の形に切り取る */
+
 /* -webkit-text-fill-color: transparent 文字を透明にする */
 
 .apple {
   display: inline-block;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
-  will-change: transform;
-  overflow: hidden;
-  background-color: #ffb6ff 0%;
   padding-bottom: 0.03em;
   margin-bottom: -0.03em;
+  overflow: hidden;
+  color: transparent;
+  background-color: #ffb6ff 0%;
+  background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
+  background-clip: text;
+  background-clip: text;
+  will-change: transform;
 }
 
 .lig {
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  background: -webkit-linear-gradient(0deg, #e50137, #fb9a00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: #f36328;
   display: inline-block;
-  font-size: 26px;
-  letter-spacing: 4px;
   margin: 0 0 7px;
+  font-size: 26px;
+  color: transparent;
+  color: #f36328;
+  letter-spacing: 4px;
+  background: linear-gradient(0deg, #e50137, #fb9a00);
+  background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .coliss {
   display: inline-block;
-  color: transparent;
   font-size: 123%;
-  line-height: 127%;
-  letter-spacing: -0.01em;
   font-weight: bold;
-  background: -webkit-linear-gradient(
+  line-height: 127%;
+  color: transparent;
+  color: #978170;
+  letter-spacing: -0.01em;
+  background: linear-gradient(
     45deg,
-    rgb(253, 18, 226) 20%,
-    rgb(164, 67, 221),
-    rgb(84, 126, 255) 90%
+    rgb(253 18 226) 20%,
+    rgb(164 67 221),
+    rgb(84 126 255) 90%
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #978170;
 }
 
 .kouhekikyozou {
   display: inline-block;
   color: transparent;
-  background: -webkit-linear-gradient(0deg, #4158d0, #c850c0 30%, #ffcc70);
+  background: linear-gradient(0deg, #4158d0, #c850c0 30%, #ffcc70);
   background: linear-gradient(90deg, #4158d0, #c850c0 30%, #ffcc70);
-  -webkit-background-clip: text;
+  background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
