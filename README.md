@@ -132,17 +132,120 @@ node_modules/
 
 Sassファイルを作成します。
 
+## MindBEMding
+
+[MindBEMding](https://gist.github.com/juno/6182957)
+
 ### SMACSSの設計思想で開発する
 
+SMACSSの設計思想に基づいて、Sassファイルを作成します。
+
+Sassファイルを以下の5つのフォルダに分割して整理します。
+
+```tree
+assets/scss
+├── base
+│   └── base.scss
+├── layout
+│   └── layout.scss
+├── module
+│   └── module.scss
+├── state
+│   └── state.scss
+└── theme
+    └── theme.scss
+```
+
+```sh
+% mkdir -p assets/scss && cd assets/scss && touch input.scss
+```
+
+```sh
+% mkdir -p base && cd base && touch normalize.scss
+```
+
+```sh
+% touch base.scss
+```
+
+scss ディレクトリより、各種ディレクトリとファイルを作成する
+
+```sh
+% mkdir layout && cd layout && touch layout.scss
+```
+
+```sh
+% mkdir module && cd module && touch module.scss
+```
+
+```sh
+% mkdir state && cd state && touch state.scss
+```
+
+```sh
+% mkdir theme && cd theme && touch theme.scss
+```
+
+次に、各フォルダには、以下の役割を持つスタイルを記述します。
+
 - Base
-サイト全体のスタイルなど、基本的なスタイルを指定します。サイトのベースにあたるものを指定する
-Layout：ヘッダーやフッターなど、大まかなレイアウトのルールを指定する
-Module：BaseやLayoutよりも細かい、全ての再利用可能なパーツ
-State：Javascriptなどの状態によって見た目が変わる場合のスタイルを指定する
-Theme：テーマ全体で統一するスタイルのこと
+
+サイト全体のスタイルなど、基本的なスタイルを指定します。
+reset.cssや、normalize.cssタイポグラフィ(font系)などのライブラリを使用する。
+
+```css
+/* Base styles */
+body {}
+a {}
+```
+
+- Layout
+
+大まかなページのレイアウトに関するスタイルを指定します。ヘッダーやフッター、サイドバーなど、ページの骨格となる要素が含まれます。
+レスポンシブデザインのためのグリッドシステムやフレキシブルボックスモデルなどもここで定義されます。
+
+```css
+/* Layout styles */
+.header {}
+.footer {}
+```
+
+- Module
+
+BaseやLayoutよりも細かい、全ての再利用可能なコンポーネントやパーツに関するスタイルを指定する。
+button,card,form,要素などが該当します。
+
+```css
+/* Module styles */
+.button {}
+.card {}
+```
+
+- State
+
+JavaScriptなどの状態によって見た目が変わる場合のスタイルを指定する.
+.is-activeや.is-hoveredなどのクラス名を使用して、要素の状態を表現します。
+
+```css
+/* State styles */
+.button.is-hovered {}
+.button.is-active {}
+```
+
+- Theme
+
+サイト全体で統一するスタイルに関する設定を指定します。例えば、カラーテーマやフォント設定が該当します。
+変数を使用してテーマのカスタマイズを容易にします。
+
+```css
+/* Theme styles */
+:root {
+  --primary-color: #0077cc;
+  --secondary-color: #0099ff;
+}
+```
 
 
-CSSの設計手法に則って実装を行う
 
 ## 自動整形する
 
