@@ -4,40 +4,37 @@
 
 .apple {
   display: inline-block;
-  color: red;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
-  will-change: transform;
-  overflow: hidden;
-  background-color: #ffb6ff 0%;
   padding-bottom: 0.03em;
   margin-bottom: -0.03em;
+  overflow: hidden;
+  color: transparent;
+  background-color: #ffb6ff 0%;
+  background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  will-change: transform;
 }
 
 .lig {
-  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin: 0 0 7px;
+  font-size: 26px;
   color: red;
-  background: -webkit-linear-gradient(0deg, #e50137, #fb9a00);
+  letter-spacing: 4px;
+  background: linear-gradient(0deg, #e50137, #fb9a00);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-background-clip: text;
-  color: #f36328;
-  display: inline-block;
-  font-size: 26px;
-  letter-spacing: 4px;
-  margin: 0 0 7px;
+  -webkit-text-fill-color: transparent;
 }
 
 .coliss {
   display: inline-block;
-  color: red;
   font-size: 123%;
-  line-height: 127%;
-  letter-spacing: -0.01em;
   font-weight: bold;
-  background: -webkit-linear-gradient(
+  line-height: 127%;
+  color: red;
+  letter-spacing: -0.01em;
+  background: linear-gradient(
     45deg,
     rgb(253, 18, 226) 20%,
     rgb(164, 67, 221),
@@ -46,14 +43,12 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #978170;
 }
 
 .kouhekikyozou {
   display: inline-block;
   color: red;
-  background: -webkit-linear-gradient(0deg, #4158d0, #c850c0 30%, #ffcc70);
-  background: linear-gradient(90deg, #4158d0, #c850c0 30%, #ffcc70);
+  background: linear-gradient(0deg, #4158d0, #c850c0 30%, #ffcc70);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -84,6 +84,8 @@ node_modules/
 
 ### Gitの作業ディレクトリの状態を表示する
 
+作業ディレクトリの状態を表示するため以下のコマンドを実行する
+
 ```sh
 % git status
 ```
@@ -106,6 +108,12 @@ node_modules/
 
 ```sh
 % git commit -m "start"
+```
+
+```result
+[master (root-commit) f6d0447] start
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
 ```
 
 ### ローカルリポジトリ内の変更をリモートリポジトリに追加する
@@ -189,6 +197,8 @@ package-lock.json
 
 ## 静的解析
 
+コードの品質を向上させるため静的解析をします。JavaScriptだとESLint。CSSだとStylelintなどがあります。
+
 ### JavaScriptの(ESLint)
 
 ```sh
@@ -196,6 +206,8 @@ package-lock.json
 ```
 
 ### ESLintの設定ファイルを作成する
+
+ESLintのルールを定義するためESLintの設定ファイルを作成する
 
 ```sh
 % npx eslint --init
@@ -295,13 +307,30 @@ npmで今すぐインストールしますか？
   pnpm
 ```
 
-### バージョン確認
+### ESLintのバージョン確認
+
+ESLintのバージョンを確認することで、ESLintがインストールできたことを確認します。
+出力結果は、ESLintのバージョンのみです。
 
 ```sh
 % npx eslint -v
 ```
 
 v8.48.0
+
+### ESLint と Prettier のルールを合わせる
+
+```sh
+% npm install eslint-config-prettier --save-dev
+```
+
+- .eslintrc.json ファイル を変更する
+
+```json
+{
+    "extends": ["standard", "prettier"],
+}
+```
 
 ### ESLintフォーマット実行
 
@@ -317,38 +346,75 @@ ESLintを実行するために以下のコマンドを実行します。
 % npx eslint 'assets/**/*.js' --fix
 ```
 
-## ESLint と　Prettierの　ルールを合わせる
+### Scssの(Stylelint)
+
+### Stylelintのインストールする
+
+scss と CSSをチェックするために以下のパッケージをインストールする
 
 ```sh
-npm install eslint-config-prettier --save-dev
+% npm install --save-dev stylelint stylelint-config-standard stylelint-config-standard-scss
 ```
 
-- .eslintrc.json ファイル を変更する
+Stylelintの設定ファイル(.stylelintrc.json)を作成する
+
+```sh
+% echo '{ "extends": "stylelint-config-standard-scss" }' > .stylelintrc.json
+```
+
+echoコマンドで、文字列をファイルに出力する場合は、 > で出力するファイル名を指定する。
+
+### CSSのセレクタの順番を順番に並べる
+
+```sh
+% npm install --save-dev stylelint-config-recess-order
+```
+
+- 次に、.stylelintrc.json に"stylelint-config-recess-order"を追加します。
 
 ```json
 {
-    "extends": ["standard", "prettier"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": true
+  }
 }
 ```
 
-### Scssの(Stylelint)
+### Stylelintを実行します
 
-## PostCSS をインストールする
-
-PostCSSはCSSコードを解析し、プラグインを使用してそのコードをルールに則って変換します。
+- css
 
 ```sh
-% npm i --save-dev postcss postcss-cli
+% npx stylelint "assets/**/*.css"
 ```
 
-postcss-cli をインストールすることでコマンドラインから利用できます。
+自動修正
 
-空の設定ファイルを作成するpostcss.config.jsを作成します。
-
-
-
-```
-% npm i -D stylelint postcss stylelint-config-sass-guidelines
+```sh
+% npx stylelint "**/*.css" --fix
 ```
 
+- sass
 
+```sh
+% npx stylelint "**/*.scss"
+```
+
+自動修正
+
+```sh
+% npx stylelint "**/*.scss" --fix
+```
+
+## プリプロセッサ
+
+SassやLESSなどのプリプロセッサでPureなCSSに変換する。
+
+```sh
+npm install sass --save-dev
+```
