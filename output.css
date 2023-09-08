@@ -1,8 +1,0 @@
-$color: skyblue;
-$font-color: black;
-.container {
-  background-color: $color;
-  &__box{
-    color: $font-color;
-  }
-}
