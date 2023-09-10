@@ -1,0 +1,45 @@
+.p-cookie {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 200;
+    background-color: rgba(0,0,0,0.7);
+    &__wrapper {
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        @include mq(md) {
+            flex-direction:row;
+        }
+    }
+    &__left{
+        flex-shrink: 1;
+
+    }&__heading{
+        @include font-rem(16);
+        font-weight: 700;
+        color: #f8fbfc;
+    }&__text{
+        @include font-rem(15);
+        counter-reset: f8fbfc;
+        text-align: justify;
+    }&__right{
+        flex-grow: 1;
+        flex-shrink: 0;
+        padding: 0 0 0 16px;
+        text-align: right;
+        @include mq(md) {
+            padding: 12px 0 8px;
+        }
+    }&__btn {
+        padding: 12px 16px;
+        @include font-rem(14);
+        font-weight: 700;
+        color: #f8fbfc;
+        border: 1px solid #f8fbfc;
+        border-radius: 16px;
+
+    }
+}

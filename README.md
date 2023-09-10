@@ -247,7 +247,173 @@ JavaScriptなどの状態によって見た目が変わる場合のスタイル�
 
 ## flocssの設計思想で開発する
 
+Foundation
+サイト全体の背景や、フォントなどのデフォルトのスタイルを定義します。
+
+Layout
+ヘッダーやフッター、ナビゲーションやサイドバーなど、各ページで共通するコンテナを定義します。
+
+Object
+Objectは全体を通して再利用可能なモジュールを定義します。
+Objectはさらに３つの階層に分類されます。
+
+Component
+Componentは最も小さなモジュールの単位です。
+ボタンやナビゲーションなど。他のプロジェクトでも汎用的に使用できるものを定義します。
+プレフィックスをつけます。c-
+具体的な内容
+
+Project
+Projectはプロジェクト固有の見た目を有するものを定義します。
+ユーザープロフィールなどの要素が該当します。
+
+p-
+
+Utility
+Utilityは余白や非表示の設定など、細かい調整を定義します。
+必要に応じて適用したい要素に付与していきます。
+u-
+
+- ファイル構成
+
+sassでstyle.scss でまとめるコードを記載する
+
+```sh
+% mkdir -p assets/scss/foundation && cd assets/scss/foundation && touch _reset.scss && touch _base.scss && touch _mixin.scss && cd ..
+```
+
+```sh
+% mkdir -p object/project && cd object/project && touch p-cookie.scss && cd ../..
+```
+
+```sass
+/* ==================================================
+* Foundation
+================================================== */
+
+/* _reset.scss _normalize.scss */
+@use "../scss/foundation/_reset";
+
+/* _base.scss */
+@use "../scss/foundation/_base";
+
+/* ==================================================
+* Layout
+================================================== */
+
+/* _header.scss */
+@use "layout/_header";
+
+.l-header {}
+
+/* _navscss(ナビゲーション) */
+
+/* _main.scss */
+@use "layout/_main";
+
+/* _aside.scss(サイドバー) */
+@use "layout/_sidebar";
+.l_sidevar.scss
+
+/* _section.scss */
+
+/* _footer.scss */
+@use "layout/_footer";
+
+
+/* ==================================================
+* Object
+================================================== */
+/* --------------------------------------------------
+* Component
+-------------------------------------------------- */
+
+/* _button.scss */
+@use "object/component/_button";
+.c-button {}
+
+/* _link.scss */
+
+.c-link {}
+
+/* _flexbox.scss */
+
+.c-flexbox {}
+
+/* _grid.scss */
+@use "object/component/_grid";
+
+/* _media.scss */
+@use "object/component/_media";
+
+/* _title.scss */
+@use "object/component/_title";
+
+/* _daialog.scss */
+
+/* --------------------------------------------------
+* Project
+-------------------------------------------------- */
+
+/* _article.scss */
+@use "object/project/_articles";
+
+/* _comments.scss */
+@use "object/project/_comments";
+
+/* _gallery.scss */
+@use "object/project/_gallery";
+
+/* _profile.scss */
+@use "object/project/_profile";
+
+/* _contact.scss */
+/* _gnavi.scss */
+/* _hamburger.scss */
+/* _profile.scss */
+/* _section.scss */
+@use "object/project/_section";
+
+
+
+/* --------------------------------------------------
+* Utility
+-------------------------------------------------- */
+/* _clearfix.scss */
+@use "object/utility/_clearfix";
+.u-clearfix {}
+/* _align.scss */
+@use "object/utility/_align";
+
+/* _margin.scss */
+@use "object/utility/_margin";
+/* _position.scss */
+/* _typography.scss */
+@use "object/utility/_typography";
+
+/* _size.scss */
+/* _text.scss */
+
+
+
+/* --------------------------------------------------
+* javascript
+-------------------------------------------------- */
+
+/* hamburger.scss */
+
+.js-hamburger__active {}
+
+
+```
+
 ## PostCSS
+
+Vite をインストール
+
+```
+% npm i -D vite postcss postcss-preset-env
+```
 
 ## 自動整形する
 

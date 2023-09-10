@@ -1,0 +1,70 @@
+@use "sass:math";
+@use "sass:map";
+
+$fontsize-root: 16;
+
+/* breakpoint */
+$breakpoints: (
+  "sm": 576,
+  "md": 768,
+  "lg": 992,
+  "xl": 1200,
+  "xxl": 1400,
+);
+
+/* media query */
+@mixin mq($breakpoint) {
+  $screen-size: #{map-get($breakpoints, $breakpoint)} + px;
+  @media screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+/* fontsize px to rem */
+@mixin font-rem($fontsize-px) {
+    font-size: math.div($fontsize-px, $fontsize-root) * 1rem;
+  }
+  
+  /* fontsize px to clamp */
+  @mixin font-clamp($fontsize-min, $fontsize-max) {
+    /* 最小値 */
+    $fontsizerem-min: math.div($fontsize-min, $fontsize-root) * 1rem;
+    /* 推奨値 */
+    /* 最小画面サイズ */
+    $viewport-min: map.get($breakpoints, "tall");
+    /* 最大画面サイズ */
+    $viewport-max: map.get($breakpoints, "venti");
+    /* font-sizeがマイナスの場合 */
+    @if $fontsize-max < $fontsize-min {
+      $tempfont-max: $fontsize-max;
+      $tempfont-min: $fontsize-min;
+      $fontsize-max: $tempfont-min;
+      $fontsize-min: $tempfont-max;
+    }
+    /* 最大font-sizeから最小font-sizeを減算しフォントサイズの変化する幅を求める */
+    $fontsize-rise: $fontsize-max - $fontsize-min;
+    /* 最大viewportから最小viewportを減算し画面幅の変化する幅を求める */
+    $viewport-run: $viewport-max - $viewport-min;
+    /* 線の傾き slope */
+    $slope: math.div(($fontsize-rise), ($viewport-run));
+    /* フォントが変化しない部分をrem単位にする計算 */
+    $preferred-rem: math.div(
+        math.round(
+          (
+              $fontsize-min - math.div($fontsize-rise, $viewport-run) *
+                $viewport-min
+            ) * 62.5
+        ),
+        1000
+      ) * 1rem;
+    /* 画面幅によってフォントサイズが変化するvw単位にする計算 */
+    $preferred-vw: math.div(round(($slope * 100000)), 1000) * 1vw;
+    /* 最大値 */
+    $fontsizerem-max: math.div($fontsize-max, $fontsize-root) * 1rem;
+    /* 結果 */
+    font-size: clamp(
+      $fontsizerem-min,
+      $preferred-rem + $preferred-vw,
+      $fontsizerem-max
+    );
+  }
